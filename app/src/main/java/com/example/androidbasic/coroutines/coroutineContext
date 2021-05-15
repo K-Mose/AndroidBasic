@@ -1,0 +1,11 @@
+https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/coroutine-context.html
+
+coroutineContext
+abstract val coroutineContext: CoroutineContext (source)
+코루틴 컨텍스트
+스코프의 컨텍스, 컨텍스트는 스코프에 의해서 캡슐화되어지고, 스코프에서 확장된 코루틴 빌더의 실행을 위해 사용된다.
+Job 인스턴스의 향상된 사용을 위해 접근하는 것 이외에는 일반적으로 코드에서 접근하는 것을 권장하지 않는다.
+
+관례상 Structured Concurrency를 강화하기 위한 job 인스턴스만 포함할 수 있다.
+
+Job -> https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutineks-core/kotlinx.coroutines/-job/index.html
