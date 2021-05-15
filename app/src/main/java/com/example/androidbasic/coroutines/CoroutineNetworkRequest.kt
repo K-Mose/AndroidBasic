@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidbasic.R
 import com.example.androidbasic.databinding.ActivityCoroutineNetworkRequestBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 // https://developer.android.com/kotlin/coroutines
@@ -48,6 +48,7 @@ withContext()를 사용함으로서 코루틴의 실행을 다른 스레드에�
 */
 
     inner class LoginViewModel:ViewModel(){
+
         /*
         코루틴이 LoginViewModel에서 생성될 때
         makeLoginReques는 메인 스레드 밖에서 실행되고,
@@ -55,11 +56,19 @@ withContext()를 사용함으로서 코루틴의 실행을 다른 스레드에�
          */
         fun login(){
             viewModelScope.launch {
-                val result = LoginRepository().makeLoginRequest("{\"a\":\"b\"}")
+                // 예외처를 하기 위해서 Repository 계층에서 코틀린에 내장된 예외처리를 사용해서 예외를 던질 수 있다.
+                // 수정) try-catch 추가
+                val result = try{ //
+                    LoginRepository().makeLoginRequest("{\"a\":\"b\"}")
+                }catch (e: Exception){ // 예외처리 시키기
+                    e.printStackTrace()
+                    ERROR
+                }
                 Log.d("RESULT",result)
                 when (result) {
-                    "connection fail" -> binding.tvText.text = "failed.."
-                    else -> binding.tvText.text = "Success!"
+                    SUCCESS -> binding.tvText.text = SUCCESS
+                    FAIL -> binding.tvText.text = FAIL
+                    ERROR -> binding.tvText.text = ERROR
                 }
             }
         }
@@ -121,4 +130,10 @@ login 함수는 다음 항목들을 실행시킬 수 있다.
 
 
 */
+
+    companion object{
+        private const val ERROR = "ERROR OCCURRED!"
+        private const val SUCCESS = "SUCCESS!"
+        private const val FAIL = "CONNECTION FAILED.."
+    }
 }
