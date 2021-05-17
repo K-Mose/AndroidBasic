@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidbasic">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBasic">
-        <activity android:name=".coroutines.CoroutineNetworkRequest"></activity>
+        <activity android:name=".doIt.customView.MyViewMainActivity"></activity>
+        <activity android:name=".doIt.parcelable.ParcelActivity" />
+        <activity android:name=".coroutines.CoroutineNetworkRequest" />
         <activity android:name=".canvas.CanvasActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

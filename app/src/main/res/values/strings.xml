@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AndroidBasic</string>
+
+    <!-- CustomView -->
+    <string name="custom_app_name">MyCustomViewEx</string>
+    <string name="custom_view1">Custom View1</string>
+    <string name="custom_view2">Custom View2</string>
+    <string name="custom_view3">Custom View3</string>
+    <string name="hint_text">힌트</string>
 </resources>
